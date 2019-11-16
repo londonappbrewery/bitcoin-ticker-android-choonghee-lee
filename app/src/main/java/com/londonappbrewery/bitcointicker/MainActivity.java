@@ -5,15 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.Toast;
-
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 
 
@@ -45,6 +40,17 @@ public class MainActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
         // TODO: Set an OnItemSelected listener on the spinner
+        spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("Bitcoin", "" + parent.getItemAtPosition(position));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.d("Bitcoin", "Nothing selected");
+            }
+        });
 
     }
 
